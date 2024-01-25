@@ -67,6 +67,24 @@ fun main() {
 
   val twoCubed = powerOf(2, 3)
   val twoTimesTwo = timesTwo(2)
+
+  val functionVal: (Int, Int) -> Int = ::powerOf
+  val twoCubed2 = functionVal(2, 3)
+
+  val pets = listOf("cat", "dog", "canary", "fish", "cow")
+  val cPets = pets.filter(::startsWithC)
+  println("== cPets: $cPets")
+
+  val cPets2 = pets.filter({ str -> str.startsWith('c') })
+  println("== cPets2: $cPets2")
+
+  // val squaresList = List(10, { i -> i * i })
+  val squaresList = List(10) { it * it }
+  println("== squaresList: $squaresList")
+}
+
+fun startsWithC(str: String): Boolean {
+  return str.startsWith('c')
 }
 
 fun printGreeting(who: String, greeting: String = "Hello") {
